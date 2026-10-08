@@ -1,26 +1,26 @@
 GIT
+  remote: https://github.com/imranasif87/rism-online-renderer
+  revision: 43e1d58973635bb5b001a508f6e055175b7ae1dc
+  specs:
+    jekyll-rism-online-renderer (1.1.3)
+      jekyll (~> 4.1)
+      sass-embedded (>= 1.68)
+
+GIT
   remote: https://github.com/rism-digital/rism-catalog-theme
   revision: 8a4314a7b38db47b245351a7e4e0a95516d266ab
   specs:
     rism-catalog-theme (1.3.0)
       jekyll (~> 4.1)
 
-GIT
-  remote: https://github.com/rism-digital/rism-online-renderer
-  revision: ebd9a8c5075e36559f95d68e96fad04befa597ce
-  specs:
-    jekyll-rism-online-renderer (1.1.3)
-      jekyll (~> 4.1)
-      sass-embedded (>= 1.68)
-
 GEM
   remote: https://rubygems.org/
   specs:
-    addressable (2.8.9)
+    addressable (2.9.0)
       public_suffix (>= 2.0.2, < 8.0)
-    bigdecimal (4.0.1)
+    bigdecimal (4.1.3)
     colorator (1.1.0)
-    concurrent-ruby (1.3.6)
+    concurrent-ruby (1.3.8)
     em-websocket (0.5.3)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0)
@@ -31,13 +31,13 @@ GEM
       logger
     faraday-net_http (3.4.2)
       net-http (~> 0.5)
-    ffi (1.17.3)
+    ffi (1.17.4)
     forwardable-extended (2.6.0)
-    google-protobuf (4.34.0)
+    google-protobuf (4.36.2)
       bigdecimal
       rake (~> 13.3)
     http_parser.rb (0.8.1)
-    i18n (1.14.8)
+    i18n (1.15.2)
       concurrent-ruby (~> 1.0)
     jekyll (4.1.1)
       addressable (~> 2.4)
@@ -73,7 +73,7 @@ GEM
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
     liquid (4.0.4)
-    listen (3.10.0)
+    listen (3.10.1)
       logger
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -87,16 +87,16 @@ GEM
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
     public_suffix (7.0.5)
-    rake (13.3.1)
+    rake (13.4.2)
     rb-fsevent (0.11.2)
     rb-inotify (0.11.1)
       ffi (~> 1.0)
     rexml (3.4.4)
     rouge (3.30.0)
     safe_yaml (1.0.5)
-    sass-embedded (1.98.0)
+    sass-embedded (1.105.1)
       google-protobuf (~> 4.31)
-      rake (>= 13)
+      rake (~> 13.3)
     sassc (2.4.0)
       ffi (~> 1.9)
     sawyer (0.9.3)

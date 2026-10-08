@@ -16,3 +16,45 @@
     fr: "Oeuvres"
     it: "Opere"
   link: /search.html
+- name:
+    en: "SuppA: Works"
+    de: "SuppA: Werke"
+    fr: "SuppA : Oeuvres"
+    it: "SuppA: Opere"
+  link: /suppa-works.html
+- name:
+    en: "SuppA: Persons"
+    de: "SuppA: Personen"
+    fr: "SuppA : Personnes"
+    it: "SuppA: Persone"
+  link: /suppa-persons.html
+- name:
+    en: "SuppA: Performances"
+    de: "SuppA: Aufführungen"
+    fr: "SuppA : Exécutions"
+    it: "SuppA: Esecuzioni"
+  link: /suppa-performances.html
+- name:
+    en: "SuppA: Correspondence"
+    de: "SuppA: Korrespondenz"
+    fr: "SuppA : Correspondance"
+    it: "SuppA: Corrispondenza"
+  link: /suppa-correspondence.html
+- name:
+    en: "SuppA: Places"
+    de: "SuppA: Orte"
+    fr: "SuppA : Lieux"
+    it: "SuppA: Luoghi"
+  link: /suppa-places.html
+- name:
+    en: "SuppA: Postcards"
+    de: "SuppA: Postkarten"
+    fr: "SuppA : Cartes postales"
+    it: "SuppA: Cartoline"
+  link: /suppa-postcards.html
+- name:
+    en: "SuppA: Recordings"
+    de: "SuppA: Aufnahmen"
+    fr: "SuppA : Enregistrements"
+    it: "SuppA: Registrazioni"
+  link: /suppa-recordings.html

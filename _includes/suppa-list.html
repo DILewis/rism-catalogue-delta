@@ -1,0 +1,15 @@
+<div
+  class="box"
+  id="suppa-list-{{ include.type }}"
+  data-detail-url="{{ '/suppa-detail.html' | relative_url }}">
+</div>
+
+<script src="{{ '/assets/js/suppa-list.js' | relative_url }}"></script>
+
+<script>
+  SuppAList.render(
+    "{{ include.type }}",
+    document.getElementById("suppa-list-{{ include.type }}"),
+    "{{ '/index/suppa-' | append: include.type | append: '.json' | relative_url }}"
+  );
+</script>

@@ -65,6 +65,15 @@ jobs:
         env:
           JEKYLL_ENV: production
 
+      - name: Enrich index with source data    # ← NEW STEP
+        if: steps.cache_index.outputs.cache-hit != 'true' || github.event.inputs.force_reindex == 'true'
+        run: python3 scripts/enrich_index.py
+
+      - name: Create SuppA index        # ← NEW, additive
+        run: python3 scripts/create_suppa_index.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Build with Jekyll
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
         env:

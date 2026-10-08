@@ -24,8 +24,10 @@
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.08em;
-        color: #1d3557; /* Deep blue theme color */
-        background-color: rgba(29, 53, 87, 0.12); /* Subtle theme tint background pill */
+        color: #1d3557;
+        /* Deep blue theme color */
+        background-color: rgba(29, 53, 87, 0.12);
+        /* Subtle theme tint background pill */
         padding: 3px 8px;
         border-radius: 4px;
         margin-bottom: 8px;
@@ -87,6 +89,48 @@
 <div id="sources"></div>
 
 <script>
+    const HIDDEN_FIELDS = {{ site.data.hide_source_fields.exclude | default: [] | jsonify }};
+
+    function makeKeyFilterTransform(keysToExclude) {
+        if (!keysToExclude || !keysToExclude.length) {
+            return (data) => data;
+        }
+        const excludeSet = new Set(keysToExclude.map(s => s.toLowerCase()));
+
+        // Matches both key names AND i18n label values
+        function isExcluded(key) {
+            return excludeSet.has(key.toLowerCase());
+        }
+
+        function labelIsExcluded(labelObj) {
+            if (!labelObj || typeof labelObj !== 'object') return false;
+            return Object.values(labelObj).some(arr =>
+                Array.isArray(arr) &&
+                arr.some(s => typeof s === 'string' && excludeSet.has(s.toLowerCase()))
+            );
+        }
+
+        function filterNode(node) {
+            if (Array.isArray(node)) {
+                return node
+                    .filter(item => !(item && typeof item === 'object' && labelIsExcluded(item.label)))
+                    .map(filterNode);
+            }
+            if (node && typeof node === 'object') {
+                const result = {};
+                for (const key of Object.keys(node)) {
+                    if (isExcluded(key)) continue;
+                    result[key] = filterNode(node[key]);
+                }
+                return result;
+            }
+            return node;
+        }
+
+        return (data) => filterNode(data);
+    }
+    const hiddenFieldsTransform = makeKeyFilterTransform(HIDDEN_FIELDS);
+
     function getParameterByName(name) {
         var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
         return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
@@ -173,7 +217,8 @@
             // which replaces/augments the summary card with full detail
             for (let i = 0; i < data.items.length; i++) {
                 const divId = `source-${i}`;
-                await new RISMOnline.SourceRenderer(data.items[i].id, divId).render(lang);
+                await new RISMOnline.SourceRenderer(data.items[i].id, divId, hiddenFieldsTransform).render(lang);
+                //removeFieldsByLabel(document.getElementById(divId), labelsToHide);
             }
 
         } catch (err) {
@@ -182,4 +227,23 @@
     }
 
     renderSources();
+
+    function removeFieldsByLabel(container, labelsToHide) {
+        // Ensure we are working with an array
+        const labels = Array.isArray(labelsToHide) ? labelsToHide : [labelsToHide];
+
+        // Select ALL elements within the container
+        const allElements = container.querySelectorAll('*');
+
+        allElements.forEach(el => {
+            // Find the label element (assuming it's a child or the element itself)
+            const labelEl = el.querySelector('.ro-label') || el;
+
+            // Check if this element's text matches any of our target labels
+            if (labels.includes(labelEl.textContent.trim())) {
+                // Remove the parent container of the label
+                el.remove();
+            }
+        });
+    }
 </script>

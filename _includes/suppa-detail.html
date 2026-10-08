@@ -1,0 +1,34 @@
+<script src="{{ '/rism-online-renderer/js/suppa-online-renderer.js' | relative_url }}"></script>
+
+<div id="suppa-detail"></div>
+
+<script>
+  function getParam(name) {
+    return new URLSearchParams(window.location.search).get(name);
+  }
+
+  const type = getParam("type");
+  const recordUrl = getParam("recordUrl");
+
+  const RENDERERS = {
+    work: SuppAOnline.SupplementaryWorkRenderer,
+    person: SuppAOnline.SupplementaryPersonRenderer,
+    performance: SuppAOnline.SupplementaryPerformanceRenderer,
+    correspondence: SuppAOnline.SupplementaryCorrespondenceRenderer,
+    place: SuppAOnline.SupplementaryPlaceRenderer,
+    postcard: SuppAOnline.SupplementaryPostcardRenderer,
+    recording: SuppAOnline.SupplementaryRecordingRenderer
+  };
+
+  const Renderer = RENDERERS[type];
+  const container = document.getElementById("suppa-detail");
+
+  if (Renderer && recordUrl) {
+    new Renderer(recordUrl, "suppa-detail").render(
+      "{{ site.active_lang }}"
+    );
+  } else {
+    container.innerHTML =
+      '<p class="has-text-danger">Missing or unknown SuppA record type.</p>';
+  }
+</script>

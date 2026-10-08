@@ -1,0 +1,4 @@
+exclude:
+  #- "contentTypes"
+  #- "materialTypes"
+  - "Content type"     # removes the summary array item in contents.summary

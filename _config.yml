@@ -29,4 +29,4 @@ theme: rism-catalog-theme
 plugins:
   - jekyll-github-metadata
 
-rism_catalog: "publications/123"
+rism_catalog: "publications/51004623"

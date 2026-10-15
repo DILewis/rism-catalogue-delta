@@ -17,44 +17,63 @@
     it: "Opere"
   link: /search.html
 - name:
-    en: "SuppA: Works"
-    de: "SuppA: Werke"
-    fr: "SuppA : Oeuvres"
-    it: "SuppA: Opere"
-  link: /suppa-works.html
+    en: "Source"
+    de: "Quelle"
+    fr: "Source"
+    it: "Fonte"
+  link: /source.html
 - name:
-    en: "SuppA: Persons"
-    de: "SuppA: Personen"
-    fr: "SuppA : Personnes"
-    it: "SuppA: Persone"
-  link: /suppa-persons.html
-- name:
-    en: "SuppA: Performances"
-    de: "SuppA: Aufführungen"
-    fr: "SuppA : Exécutions"
-    it: "SuppA: Esecuzioni"
-  link: /suppa-performances.html
-- name:
-    en: "SuppA: Correspondence"
-    de: "SuppA: Korrespondenz"
-    fr: "SuppA : Correspondance"
-    it: "SuppA: Corrispondenza"
-  link: /suppa-correspondence.html
-- name:
-    en: "SuppA: Places"
-    de: "SuppA: Orte"
-    fr: "SuppA : Lieux"
-    it: "SuppA: Luoghi"
-  link: /suppa-places.html
-- name:
-    en: "SuppA: Postcards"
-    de: "SuppA: Postkarten"
-    fr: "SuppA : Cartes postales"
-    it: "SuppA: Cartoline"
-  link: /suppa-postcards.html
-- name:
-    en: "SuppA: Recordings"
-    de: "SuppA: Aufnahmen"
-    fr: "SuppA : Enregistrements"
-    it: "SuppA: Registrazioni"
-  link: /suppa-recordings.html
+    en: "Other related data"
+    de: "Weitere verwandte Daten"
+    fr: "Autres données associées"
+    it: "Altri dati correlati"
+  link: "#"
+  dropdown:
+    # - name:
+    #     en: "SuppA: Works"
+    #     de: "SuppA: Werke"
+    #     fr: "SuppA : Oeuvres"
+    #     it: "SuppA: Opere"
+    #   link: /suppa-works.html
+
+    - name:
+        en: "Persons"
+        de: "Personen"
+        fr: "Personnes"
+        it: "Persone"
+      link: /suppa-persons.html
+
+    - name:
+        en: "Performances"
+        de: "Aufführungen"
+        fr: "Exécutions"
+        it: "Esecuzioni"
+      link: /suppa-performances.html
+
+    - name:
+        en: "Correspondence"
+        de: "Korrespondenz"
+        fr: "Correspondance"
+        it: "Corrispondenza"
+      link: /suppa-correspondence.html
+
+    - name:
+        en: "Places"
+        de: "Orte"
+        fr: "Lieux"
+        it: "Luoghi"
+      link: /suppa-places.html
+
+    - name:
+        en: "Postcards"
+        de: "Postkarten"
+        fr: "Cartes postales"
+        it: "Cartoline"
+      link: /suppa-postcards.html
+
+    - name:
+        en: "Recordings"
+        de: "Aufnahmen"
+        fr: "Enregistrements"
+        it: "Registrazioni"
+      link: /suppa-recordings.html

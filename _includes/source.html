@@ -1,0 +1,41 @@
+<div id="source-container"
+    data-default-id="{{ include.id | default: 'https://rism.online/sources/1001381468' | escape }}"></div>
+
+<script src="{{ '/rism-online-renderer/js/rism-online-renderer.js' | relative_url }}"></script>
+
+<div id="source"></div>
+
+<script>
+    async function renderSource() {
+        const params = new URLSearchParams(window.location.search);
+
+        const sourceElement = document.getElementById('source-container');
+
+        const sourceId = params.get('id') || sourceElement.dataset.defaultId;
+
+        console.log('Source ID:', sourceId);
+
+        let sourceURL = sourceId;
+        const lang = '{{ site.active_lang }}';
+
+        const workRenderer = await new RISMOnline.SourceRenderer(sourceURL, 'source');
+        await workRenderer.render(lang);
+
+        const links = document.querySelectorAll(
+            '.ro-sourceitems > .ro-source .ro-labelledlink a'
+        );
+
+        links.forEach(link => {
+            const originalUrl = link.getAttribute('href');
+
+            if (originalUrl) {
+                link.setAttribute(
+                    'href',
+                    `./source.html?id=${encodeURIComponent(originalUrl)}`
+                );
+            }
+        });
+    }
+
+    renderSource()
+</script>

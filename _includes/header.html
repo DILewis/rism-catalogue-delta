@@ -1,0 +1,76 @@
+<nav class="navbar">
+    <div class="container">
+        <div class="navbar-brand">
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div class="navbar-menu" id="navMenu">
+            <div class="navbar-start">
+                {% assign active_nav = page.permalink | default: layout.nav %}
+                {% for item in site.data.navigation %}
+                {% if item.dropdown %}
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a href="{{ item.link | relative_url }}"
+                        class="navbar-link {% if item.link == page.url %}is-active{% endif %}">
+                        {% if item.name[site.active_lang] %}
+                        {{ item.name[site.active_lang] }}
+                        {% else %}
+                        {{ item.name.en | default: item.name }}
+                        {% endif %}
+                    </a>
+                    <div class="navbar-dropdown">
+                        {% for subitem in item.dropdown %}
+                        <a href="{{ subitem.link | relative_url }}" {% if subitem.blank %}target="_blank" {% endif %}
+                            class="navbar-item {% if subitem.link == page.url %}is-active{% endif %}">
+                            {% if subitem.name[site.active_lang] %}
+                            {{ subitem.name[site.active_lang] }}
+                            {% else %}
+                            {{ subitem.name.en | default: subitem.name }}
+                            {% endif %}
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% else %}
+                <a href="{{ item.link | relative_url }}" {% if item.blank %}target="_blank" {% endif %}
+                    class="navbar-item {% if active_nav == item.link %}is-active{% endif %}">
+                    {{ item.name[site.active_lang] }}
+                    {% if item.blank %}<i class="ml-2 fa fa-xs fa-external-link-alt"></i>{% endif %}
+                </a>
+                {% endif %}
+                {% endfor %}
+            </div>
+
+            <div class="navbar-end">
+
+                {% if site.enable_search and page.no_search_box != true %}
+                <div class="navbar-item">
+                    {% assign search_title = site.data.locales | where: "id", "search-title" | first %}
+                    {% assign action = "/search.html" %}
+                    {% if site.active_lang != "en" %}{% assign action = "/" | append: site.active_lang | append: action"
+                    %}{% endif %}
+                    <form action="{{ action }}">
+                        <div class="field has-addons">
+                            <div class="control">
+                                <input id="website-search" class="input is-small" type="text" name="q"
+                                    placeholder="{{ search_title.name[site.active_lang] }} ... ">
+                            </div>
+                            <div class="control">
+                                <button type="submit" class="button is-small is-dark">
+                                    <span class="icon is-small">
+                                        <i class="fas fa-search"></i>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+</nav>

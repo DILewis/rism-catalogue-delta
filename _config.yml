@@ -1,13 +1,13 @@
 title: 
- en: Elgar Thematic Catalogue (ETC)
+ en: Viewing and Merging RISM records
  it: Catalogo tematico di Elgar (ETC)
 title_mobile: 
-  en: Elgar Thematic Catalogue (ETC)
+  en: Viewing and Merging RISM records
   it: Catalogo tematico di Elgar (ETC)
 
 email: info@rism.digital
 url: https://DILewis.github.io
-baseurl: "/rism-catalogue-andp/"
+baseurl: "/rism-catalogue-delta/"
 repository: DILewis/rism-catalogue-delta
 version: 1.0.0
 doi: 10.5448/rism-catalogs-001
